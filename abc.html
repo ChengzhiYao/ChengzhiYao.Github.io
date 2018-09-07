@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<style> 
+
+body{
+     background-image: url("4.jpg"); /* The image used */
+  background-color: #cccccc; /* Used if the image is unavailable */
+ /* You must set a specified height */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Do not repeat the image */
+ background-size: cover; /* Resize the background image to cover the entire container */
+ background-attachment: fixed;
+ 
+}
+
+    
+.abc1{
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background-color: 	rgba(20, 20, 31,0.5);
+  transform: translate(-50%, -50%);
+  color: white;
+  margin-left:0px;
+   padding: 35px;
+     font-family: 'Annie Use Your Telescope';font-size: 22px;
+}
+#myBtn {
+    width: 200px;
+    font-size: 18px;
+    padding: 10px;
+    border: none;
+    background:	#E6E6FA;
+    color: black;
+    cursor: pointer;}
+#myBtn:hover {
+    background: black;
+    color: white ;}
+</style>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    
+   
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+        <link rel="stylesheet" href="oh.css">
+       <link href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope' rel='stylesheet'>
+  </head>
+  <body>
+<div class="bg"></div>
+</div>
+   <div class="abc1">
+    <h1 class="animated tada"> My Friend Wincy</h1>
+    <p>I have a <span id="abcc"></span>  friend, her name is Wincy, she likes <span id="acc">to talk</span> alot. I enjoy to <span id="ace">spend time</span> with her, and <span id="aee">text her</span>. sometimes she could be little <span id= "accc">selfish</span>, but most of the time she is a good <span id="adc">friend </span>.</p>
+    <p>She also likes to <span id="bac">play video game</span> and she <span id="dac">eats</span> alot. She could almost be my ideal <span id="fc">partner</span>. However, she isn't a good <span id="fa">student</span>, she does not like to <span id="omg"></span> and she has no plan for her own <span id=aft>future</span>, so that makes me little bit worry about her.
+    <BR>
+     <form method="get" action="1.html">
+    <button id="myBtn" type="submit">Lights Up</button>
+    </form>
+    <BR>
+    <script>
+  
+   var firstword=["lonely","stupid","ugly","dumb","Brainless","idiot"];
+   var sw=["to eat","to play video games","shopping","me"];
+  var siw=["hang out", "having lunch","play video games","go to school"];
+  var fw=["kill her","stole her money", "punch her", "making fun of her"];
+  var fiw=["jerk","foolish","rude","sick","crazy"];
+  var siew=["guy","woman","girl","wife","companion","student"];
+    var seven=["play sports","work out","skip classes","my flattering words","fashion","animals"];
+     var ae=["crys"];
+     var af=["partner","friend","sister","wife","mother","classmate","soulmate","worker"]
+     var oh=["student","listener","girl","helper"]
+     var ohn=["read","study","write","study english","be a smart person","society"]
+     var after=["after life","children","academic","offspring","future"]
+var rd=Math.floor( Math.random()*firstword.length);
+var rd2=Math.floor( Math.random()*sw.length);
+var rd3=Math.floor( Math.random()*siw.length);
+var rd4=Math.floor( Math.random()*fw.length);
+var rd5=Math.floor( Math.random()*fiw.length);
+var rd6=Math.floor( Math.random()*siew.length);
+var rd7=Math.floor( Math.random()*seven.length);
+var rd8=Math.floor( Math.random()*ae.length);
+var rd9=Math.floor( Math.random()*af.length);
+var rd10=Math.floor( Math.random()*oh.length);
+var rd11=Math.floor( Math.random()*ohn.length);
+var rd12=Math.floor( Math.random()*after.length);
+window.onload = function () {
+  var first= document.getElementById('abcc');
+    var sc= document.getElementById('acc');
+    var sic= document.getElementById('ace');
+     var sec= document.getElementById('aee');
+     var sbc= document.getElementById('accc');
+       var sdc= document.getElementById('adc');
+       var ddc=document.getElementById('bac');
+       var ac=document.getElementById('dac');
+       var ab=document.getElementById('fc');
+           var ah=document.getElementById('fa');
+           var ahn=document.getElementById('omg');
+            var helln=document.getElementById('aft');
+  first.textContent = firstword[rd];
+   sc.textContent = sw[rd2];
+   sic.textContent = siw[rd3];
+   sec.textContent = fw[rd4];
+    sbc.textContent = fiw[rd5];
+    sdc.textContent = siew[rd6];
+    ddc.textContent = seven[rd7];
+        ac.textContent = ae[rd8];
+         ab.textContent = af[rd9];
+            ah.textContent = oh[rd10];
+             ahn.textContent = ohn[rd11];
+              helln.textContent = after[rd12];
+};
+</script>
+</div>
+   
+  </body>
+</html>
+
