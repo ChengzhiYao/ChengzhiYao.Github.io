@@ -52,8 +52,8 @@ body{
 </div>
    <div class="abc1">
     <h1 class="animated tada"> My Friend Wincy</h1>
-    <p>I have a <span id="abcc"></span>  friend, her name is Wincy, she likes <span id="acc">to talk</span> alot. I enjoy to <span id="ace">spend time</span> with her, and <span id="aee">text her</span>. sometimes she could be little <span id= "accc">selfish</span>, but most of the time she is a good <span id="adc">friend </span>.</p>
-    <p>She also likes <span id="bac">play video game</span> and she <span id="dac">eats</span> alot. She could almost be my ideal <span id="fc">partner</span>. However, she isn't a good <span id="fa">student</span>, she does not like to <span id="omg"></span> and she has no plan for her own <span id=aft>future</span>, so that makes me little bit worry about her.
+     <p>I have  a <span id="abcc"></span>  friend, her name is Wincy, she likes <span id="acc">to talk</span> alot. I enjoy to <span id="ace">spend time</span> with her, and <span id="aee">text her</span>. sometimes she could be little <span id= "accc">selfish</span>, but most of the time she is a good <span id="adc">friend </span>.</p>
+    <p>She also likes  <span id="bac">play video game</span> and she <span id="dac">eats</span> alot. She could almost be my ideal <span id="fc">partner</span>. However, she isn't a good <span id="fa">student</span>, she does not like to <span id="omg"></span> and she has no <span id="idk">plan</span> for her own <span id=aft>future</span>, so that makes me little bit <span id="hehe">worry about</span> her.
     <BR>
      <form method="get" action="1.html">
     <button id="myBtn" type="submit">Lights Up</button>
@@ -73,6 +73,8 @@ body{
      var oh=["student","listener","girl","helper"]
      var ohn=["read","study","write","study english","be a smart person","society"]
      var after=["after life","children","academic","offspring","future"]
+     var ioh=["plan","idea","purpose","thoughts","Ambitions"]
+     var tired=["worry about", "tired of", "mad of", " sad because I can not help"]
 var rd=Math.floor( Math.random()*firstword.length);
 var rd2=Math.floor( Math.random()*sw.length);
 var rd3=Math.floor( Math.random()*siw.length);
@@ -85,6 +87,8 @@ var rd9=Math.floor( Math.random()*af.length);
 var rd10=Math.floor( Math.random()*oh.length);
 var rd11=Math.floor( Math.random()*ohn.length);
 var rd12=Math.floor( Math.random()*after.length);
+         var rd13=Math.floor( Math.random()*ioh.length);
+var rd14=Math.floor( Math.random()*tired.length);
 window.onload = function () {
   var first= document.getElementById('abcc');
     var sc= document.getElementById('acc');
@@ -98,6 +102,8 @@ window.onload = function () {
            var ah=document.getElementById('fa');
            var ahn=document.getElementById('omg');
             var helln=document.getElementById('aft');
+        var ohzz=document.getElementById('idk');
+                var bored=document.getElementById('hehe');
   first.textContent = firstword[rd];
    sc.textContent = sw[rd2];
    sic.textContent = siw[rd3];
@@ -110,6 +116,8 @@ window.onload = function () {
             ah.textContent = oh[rd10];
              ahn.textContent = ohn[rd11];
               helln.textContent = after[rd12];
+         ohzz.textContent = ioh[rd13];
+                  bored.textContent = tired[rd14];
 };
 </script>
 </div>
