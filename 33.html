@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<style>
+.abc1{
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: 	white;
+  transform: translate(-50%, -50%);
+  color: black;
+  margin-left:0px;
+   padding: 35px;
+      font-family: 'Covered By Your Grace';font-size: 22px;}
+     
+     * {
+    box-sizing: border-box;
+}
+body {
+    background-color: white;
+   
+    
+}
+H2 {
+    color: white;
+     font-family: 'Caesar Dressing';font-size: 50px;
+}
+
+h3{
+  font-family: 'Covered By Your Grace';font-size: 22px;;
+margin-left: 25px;
+color: white;
+}
+    .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+     background-image: url(fcu.jpg);
+
+}
+
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+.f{
+ background-color: 	rgba(20, 20, 31,0.5);
+ color: white;
+ padding: 35px;
+}
+  .ff {
+
+    background-image: url(fcu.jpg);
+   
+} 
+
+.ff:after {
+   content: "";
+  background-image: url(ffff.jpg);
+  opacity: 0.5;
+
+}
+
+.header {
+  overflow: hidden;
+  background-color: #714D45;
+  
+   background-image: url(fff.jpg);
+  padding: 50px 1000px;}
+  
+  .img{
+    background-image: url(fcu.jpg);
+
+  }
+</style>
+  <head>
+  <link href='https://fonts.googleapis.com/css?family=Caesar Dressing' rel='stylesheet'>
+  <link href='https://fonts.googleapis.com/css?family=Covered By Your Grace' rel='stylesheet'>
+    <meta charset="UTF-8">
+   
+  </head>
+ 
+
+  <body>
+  <div class="img">
+  <div class="header">
+  <h1></h1>
+</div>
+   
+     <div class="row">
+     <div class="column" style="background-color:white;">
+ <div class="ff">
+ <div class="f">
+   <center><H2> <span id="Pname"></span> </H2></center>
+    <H3> Description</H3>
+  <p> </p>
+   <p> <span id="Dscript"></span></p>
+     <H3> Current pledge amount</H3>
+  <p><span id="pam"></span></p>
+   <H3> Current number of backers</H3>
+  <p><span id="cam"></span> </p>
+  <H3><span id="p1n">Pledge US$ 1 or more</span></H3>
+  
+  <span id="p1p"></span>
+  <h3>Includes:</h3><span id="p1c"> </span>
+  <H3><span id="p2n">Pledge US$ 1 or more</span></H3>
+  
+  <span id="p2p"></span>
+  <h3>Includes:</h3><span id="p2c"></span>
+  <H3><span id="p3n">Pledge US$ 1 or more</span></H3>
+  
+ <span id="p3p"></span>
+  <h3>Includes:</h3><span id="p3c"> </span>
+   <H3>Expiration date</H3>
+  <span id="exp"> </span>
+  <H3>Time Left</H3>
+  <span id="demo"> </span>
+  </div>
+ </div>
+ </div>
+ 
+  <div class="column" style="background-color: white;" id="x">
+  <p></P>
+    <p></P>  <p></P>  <p></P>  <p></P>  <p></P>  <p></P>  <p></P>  <p></P>  <p></P>v
+   
+<div ></div>
+ </div>
+ </div>
+ 
+  <div class="header">
+  <h1></h1>
+</div>
+</div>
+  </body>
+  
+  <script>
+  
+var kickstarter ={
+  name: 'Cthulhu is Hard to Spell: A comic anthology about Lovecraft',
+  Description:'A love letter to Lovecraft. A comic anthology with thirty-five awesome stories about Lovecraftian gods and monsters, from fans to fans.'
+  };
+ 
+  
+  var Pledge1 ={
+    name:"Pledge 1 dollor",
+    price:"1$",
+    includes:"Paper toy",}
+    
+     var Pledge2 ={
+    name:"Pledge 10 dollors",
+    price:"10$",
+    includes:'Digital Lovecraft, Paper toy'
+    };
+var Pledge3 ={
+    name:"Pledge 20 dollors",
+    price:"20$",
+    includes:'Digital Lovecraft ,Paper toy, Audio Commentary'
+    };
+
+
+    
+
+document.getElementById("Pname").innerHTML = kickstarter.name;
+document.getElementById("Dscript").innerHTML = kickstarter.Description;
+document.getElementById("pam").innerHTML = "22708";
+document.getElementById("cam").innerHTML = "574";
+document.getElementById("p1n").innerHTML = Pledge1.name;
+document.getElementById("p1p").innerHTML = Pledge1.price;
+document.getElementById("p1c").innerHTML = Pledge1.includes;
+document.getElementById("p2n").innerHTML = Pledge2.name;
+document.getElementById("p2p").innerHTML = Pledge2.price;
+document.getElementById("p2c").innerHTML = Pledge2.includes;
+document.getElementById("p3n").innerHTML = Pledge3.name;
+document.getElementById("p3p").innerHTML = Pledge3.price;
+document.getElementById("p3c").innerHTML = Pledge3.includes;
+document.getElementById("exp").innerHTML = "Fri, September 28 2018 12:00 AM EDT";
+
+ </script>
+ 
+  <script>
+var img = new Image();
+var div = document.getElementById('x');
+ 
+ 
+img.onload = function() {
+ 
+  div.innerHTML += '<img src="'+img.src+'" />'; 
+ 
+};
+ 
+ 
+img.src = '121.png';
+  </script>
+  <script>
+var countDownDate = new Date("September 28, 2018 12:00:25").getTime();
+
+var x = setInterval(function() {
+
+    var now = new Date().getTime();
+    
+    var distance = countDownDate - now;
+    
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+}, 1000);
+</script>
+
+ 
+
+
+</html>
