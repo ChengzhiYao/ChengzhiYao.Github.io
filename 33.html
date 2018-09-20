@@ -101,18 +101,28 @@ color: white;
   <p><span id="pam"></span></p>
    <H3> Current number of backers</H3>
   <p><span id="cam"></span> </p>
-  <H3><span id="p1n">Pledge US$ 1 or more</span></H3>
   
-  <span id="p1p"></span>
-  <h3>Includes:</h3><span id="p1c"> </span>
-  <H3><span id="p2n">Pledge US$ 1 or more</span></H3>
+  <div id="whatever">
+  </div>
+ <!-- <H3><span id="p1n">Pledge US$ 1 or more</span></H3>-->
   
-  <span id="p2p"></span>
-  <h3>Includes:</h3><span id="p2c"></span>
-  <H3><span id="p3n">Pledge US$ 1 or more</span></H3>
+ <!-- <span id="p1p"></span>-->
+ <!-- <h3>Includes:</h3><span id="p1c"> </span>-->
+ <!-- <h3>colors:</h3><span id="p1e"> </span>-->
+  <!-- <h3>instock:</h3><span id="p2b"> </span>-->
+ <!-- <H3><span id="p2n">Pledge US$ 1 or more</span></H3>-->
+
   
- <span id="p3p"></span>
-  <h3>Includes:</h3><span id="p3c"> </span>
+ <!-- <span id="p2p"></span>-->
+ <!-- <h3>Includes:</h3><span id="p2c"></span>-->
+ <!-- <H3><span id="p3n">Pledge US$ 1 or more</span></H3>-->
+  <!-- <h3>colors:</h3><span id="p2e"> </span>-->
+  <!-- <h3>instock:</h3><span id="p2b"> </span>-->
+  
+ <!--<span id="p3p"></span>-->
+ <!-- <h3>Includes:</h3><span id="p3c"> </span>-->
+ <!-- <h3>colors:</h3><span id="p3e"> </span>-->
+ <!-- <h3>instock:</h3><span id="p3b"> </span>-->
    <H3>Expiration date</H3>
   <span id="exp"> </span>
   <H3>Time Left</H3>
@@ -123,7 +133,7 @@ color: white;
  
   <div class="column" style="background-color: white;" id="x">
   <p></P>
-    <p></P>  <p></P>  <p></P>  <p></P>  <p></P>  <p></P>  <p></P>  <p></P>  <p></P>v
+    <p></P>  <p></P>  <p></P>  <p></P>  <p></P>  <p></P>  <p></P>  <p></P>  <p></P>
    
 <div ></div>
  </div>
@@ -143,21 +153,32 @@ var kickstarter ={
   };
  
   
-  var Pledge1 ={
-    name:"Pledge 1 dollor",
-    price:"1$",
-    includes:"Paper toy",}
-    
-     var Pledge2 ={
-    name:"Pledge 10 dollors",
-    price:"10$",
-    includes:'Digital Lovecraft, Paper toy'
-    };
-var Pledge3 ={
-    name:"Pledge 20 dollors",
-    price:"20$",
-    includes:'Digital Lovecraft ,Paper toy, Audio Commentary'
-    };
+  var Pledges = [
+    {
+      name:"Pledge 1 dollor",
+      price:"1$",
+      includes:"Paper toy",
+      color:"red",
+      instock:"yes",
+      le:"worthy"
+    },
+    {
+      name:"Pledge 10 dollors",
+      price:"10$",
+      includes:'Digital Lovecraft, Paper toy',
+      color:"blue",
+       instock:"yes",
+      le:"worthy"
+    },
+    {
+      name:"Pledge 20 dollors",
+      price:"20$",
+      includes:'Digital Lovecraft ,Paper toy, Audio Commentary',
+      color:"yellow",
+       instock:"no",
+       le:"no-worthy"
+    }
+  ];
 
 
     
@@ -166,18 +187,40 @@ document.getElementById("Pname").innerHTML = kickstarter.name;
 document.getElementById("Dscript").innerHTML = kickstarter.Description;
 document.getElementById("pam").innerHTML = "22708";
 document.getElementById("cam").innerHTML = "574";
-document.getElementById("p1n").innerHTML = Pledge1.name;
-document.getElementById("p1p").innerHTML = Pledge1.price;
-document.getElementById("p1c").innerHTML = Pledge1.includes;
-document.getElementById("p2n").innerHTML = Pledge2.name;
-document.getElementById("p2p").innerHTML = Pledge2.price;
-document.getElementById("p2c").innerHTML = Pledge2.includes;
-document.getElementById("p3n").innerHTML = Pledge3.name;
-document.getElementById("p3p").innerHTML = Pledge3.price;
-document.getElementById("p3c").innerHTML = Pledge3.includes;
+// document.getElementById("p1n").innerHTML = Pledge1.name;
+// document.getElementById("p1p").innerHTML = Pledge1.price;
+// document.getElementById("p1c").innerHTML = Pledge1.includes;
+// document.getElementById("p2n").innerHTML = Pledge2.name;
+// document.getElementById("p2p").innerHTML = Pledge2.price;
+// document.getElementById("p2c").innerHTML = Pledge2.includes;
+// document.getElementById("p3n").innerHTML = Pledge3.name;
+// document.getElementById("p3p").innerHTML = Pledge3.price;
+// document.getElementById("p3c").innerHTML = Pledge3.includes;
+ //document.getElementById("p1e").innerHTML = Pledge3.color;
+// document.getElementById("p2e").innerHTML = Pledge3.color;
+// document.getElementById("p3e").innerHTML = Pledge3.color;
 document.getElementById("exp").innerHTML = "Fri, September 28 2018 12:00 AM EDT";
 
+var verycoolname=document.getElementById("whatever");
+     
+
+
+for (i=0; i < Pledges.length; i++) {
+  verycoolname.innerHTML += '<H3><span id="p' + (i + 1) + 'n">' + Pledges[i].name + '</span></H3>';
+  verycoolname.innerHTML += '<span id="p' + (i + 1) + 'p">' + Pledges[i].price + '</span>';
+  verycoolname.innerHTML += '<p><span id="p' + (i + 1) + 'c">' + Pledges[i].includes + '</span></p>';
+  verycoolname.innerHTML += '<span id="p' + (i + 1) + 'e">' + Pledges[i].color + '</span></H3>';
+  verycoolname.innerHTML += '<p><span id="p' + (i + 1) + 'b">' + Pledges[i].instock + '</span></p>';
+    verycoolname.innerHTML += '<p><span id="p' + (i + 1) + 'd">' + Pledges[i].le + '</span></p>';
+  // document.getElementById("p" + (i + 1) + "n").innerHTML = Pledges[i].name;
+  // document.getElementById("p" + (i + 1) + "p").innerHTML = Pledges[i].price;
+  // document.getElementById("p" + (i + 1) + "c").innerHTML = Pledges[i].includes;
+}
+
  </script>
+ 
+ 
+ 
  
   <script>
 var img = new Image();
