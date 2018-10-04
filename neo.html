@@ -1,0 +1,496 @@
+ <html lang="en">
+    <head>
+    <meta charset="utf-8">
+    	
+    <style>
+    html {
+    box-sizing: border-box;
+    
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    
+}
+ #duler{
+    font-family: 'Bad';
+    font-size: 50px;
+    color:white;
+ }
+#euler{
+    font-family: 'Bad';
+    font-size: 50px;
+    color:white;
+ }
+ #fuler{
+   
+    font-size: 20px;
+    color:red;
+ }
+ 	@font-face { font-family: Bad; src: url('Nova.ttf'); 
+		} 
+
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+  background-position: center; 
+      background-size:cover;
+    background-attachment: fixed;
+        background-repeat: no-repeat;
+   color=white;
+    
+}
+
+body {
+    background: #ffffff;
+    font-family: 'Coda', cursive;
+    
+  background: url(DBA.jpg);
+  background-position: center; 
+      background-size:cover;
+    background-attachment: fixed;
+        background-repeat: no-repeat;
+  color=white;
+ 
+    
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'UnifrakturMaguntia';font-size: 100px;
+    font-weight: 300;
+    text-align: center;
+    text-transform: full-width;
+    color:white;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 1100px;
+    min-height: 1000px;
+    background-image: url(dn1.jpg);
+    padding: 32px;
+    border-radius: 16px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    height: 200px;
+    width: 200px;
+       background-position: center; 
+background-repeat: no-repeat;
+    background-attachment: fixed;
+     background-size: cover;
+    background: url(give.jpg);
+    font-size: 0;
+    color: #ffff;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+
+
+
+
+
+.deck .card.open {
+    font-size: 33px;
+    transition: 0.6s;
+
+    transform: rotateY(240);
+    color:white;
+    cursor: default;
+    background: url(dn14.jpg);
+}
+
+
+
+
+
+
+
+
+.deck .card.match {
+    cursor: default;
+    background: rgba(255,255,255,0.1);
+    font-size: 0px;
+      box-shadow: 0px 0px 0px 0 rgba(24, 61, 73, 0.0);
+}
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    text-align: left;
+    width: 960px;
+    margin-bottom: 10px;
+    
+}
+
+.score-panel .stars,
+.modal .stars
+{
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+    color: white; 
+    font-size: 50px;
+}
+
+.score-panel .stars li,
+.modal .stars li
+{
+    list-style: none;
+    display: inline-block;
+}
+
+.score-panel .restart {
+    float: right;
+    display: inline-block;
+    margin :0 0 0 80px;
+    cursor: pointer;
+    font-size:30px;
+    color:white;
+}
+
+.score-panel .timer {
+    margin: 0 0 0 50px;
+    display: inline-block;
+     
+    
+}
+
+/*Style for the popup modal*/
+
+.modal {
+    display: none;
+    top : 0;
+    right : 0;
+    bottom : 0;
+    left : 0;
+    position: fixed;
+    color: white;
+    background: url(dda.jpg);
+    background-color: rgba(0,0,0,0.6);
+}
+
+.modal-content {
+    max-width: 560px;
+    padding : 40px;
+    margin: 5em auto;
+    border-radius: 10px;
+    background-color: cyan;
+    background: url(TGOD.jpg);
+}
+
+.modal-title {
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    font-weight: 400;
+}
+
+.modal-elements {
+    display: inline-block;
+    align-items: center;
+}
+
+.modal-message {
+    font-size: 2em;
+    text-align: center;
+}
+
+/*Media queries*/
+
+@media only screen and (max-width: 600px) {
+
+    header {
+        width: 100%;
+        justify-content: space-around;
+    }
+    
+    .score-panel {
+        width: 100%;
+        font-size: 50px;
+    } 
+    
+    .score-panel .timer {
+        margin: 0 0 0 20px;
+        display: inline-block;
+    }
+    .score-panel .restart {
+    margin: 0 0 0 45px;    
+    }
+    
+    .deck {
+        width: 100%;
+        justify-content: space-around;
+        box-shadow: none;
+    }
+    
+    .deck .card {
+        width: 70px;
+        height: 70px;
+ 
+    }
+    
+    .deck .card.open {
+      font-size: 25px;    
+    }
+    .h1{
+      color:white;
+}
+
+</style>
+    
+    <title  class="animated tada">To Become Kira</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
+    </script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=1">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link href='https://fonts.googleapis.com/css?family=UnifrakturMaguntia' rel='stylesheet'>
+ <link rel="stylesheet" href="oh.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+
+
+    </head>
+    <body>
+
+    <div class="container">
+    <header>
+    <h1  class="animated bounceInLeft" color="white">To Become Kira</h1>
+    <section class="score-panel">
+
+        <ul class="stars"  class="animated bounce">
+    <li><i  class="fa fa-apple-alt"></i></li>
+    <li><i class="fa fa-apple-alt"></i></li>
+    <li><i class="fa fa-apple-alt"></i></li>
+    <li><i class="fa fa-apple-alt"></i></li>
+    <li><i class="fa fa-apple-alt"></i></li>
+    
+    </ul>
+    
+        <span class="moves" id="euler">0</span> <span id="fuler">Moves </span>
+        <div class="restart">
+        RESTART
+    <i class="fas fa-arrow-alt-circle-left"></i>
+            </div>
+
+        <span id="duler" class="timer">
+
+        00:00:00
+
+        </span>
+    </section>
+    </header>
+   <div class="modal">
+   <div class="modal-content">
+       <h2 class="modal-title">Congratulations!</h2>
+       <p class="modal-message">You are now the God of New World</p>
+  <div class="modal-element">
+      <span>Time :</span>
+       </div>
+       <div class="modal-element">
+           <span >Moves :</span>
+       </div>
+       <div class="modal-element">
+           <span> Apples :</span> 
+        </div>
+       </div>
+    </div>
+   </div>
+   </body>
+    <script>
+    // List of all cards icons
+    
+    
+    
+    var Cards = ["fa fa-user-secret","fa fa-user-tie","fa fa-user-secret","fa fa-user-tie","fa fa-user","fa fa-user-graduate","fa fa-user","fa fa-user-graduate","fa fa-user-secret","fa fa-user-tie","fa fa-user-secret","fa fa-user-tie","fa fa-user-secret","fa fa-user-tie","fa fa-user-secret","fa fa-user-tie","fa fa-user-secret","fa fa-user-tie","fa fa-user-secret","fa fa-user-tie"];
+    
+    
+    
+    
+    // An empty array where values of open cards are pushed to compare.
+    var OpenCards= [];
+    //An empty array of cards where shuffled cards are stored.
+    var shuffleCards=[];
+    var tilesFlipped=0;
+    var numOfmoves=0;
+    // Function to shuffle an array of cards.
+    function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+    while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+    }
+    return array;
+    }
+    // shuffle the cards array
+    shuffleCards = shuffle(Cards);
+    // Timer code start
+    var clearTime; 
+    var seconds = 0, minutes = 0, hours = 0;
+    var clearState; 
+    var secs, mins, gethours ; 
+    //Timer start function  
+    function startWatch( ) {
+    /* check if seconds is equal to 60 and add a +1 to minutes, and set seconds to 0 */ 
+    if ( seconds === 60 ) { seconds = 0; minutes = minutes + 1; }
+    /* you use the javascript tenary operator to format how the minutes should look and add 0 to minutes if less than 10 */ 
+    mins = ( minutes < 10 ) ? ( '0' + minutes + ': ' ) : ( minutes + ': ' );
+    /* check if minutes is equal to 60 and add a +1 to hours set minutes to 0 */ 
+    if ( minutes === 60 ) { minutes = 0; hours = hours + 1; }
+    /* you use the javascript tenary operator to format how the hours should look and add 0 to hours if less than 10 */
+    gethours = ( hours < 10 ) ? ( '0' + hours + ': ' ) : ( hours + ': ' );
+    secs = ( seconds < 10 ) ? ( '0' + seconds ) : ( seconds ); 
+    // display the stopwatch 
+    var time =gethours + mins + secs;
+    $('.container').find('.timer').html(time);
+    /* call the seconds counter after displaying the stop watch and increment seconds by +1 to keep it counting */
+    seconds++; 
+    /* call the setTimeout( ) to keep the timer alive ! */ 
+    clearTime = setTimeout( "startWatch( )", 1 );} 
+    
+    
+    // Function used to start the timer
+    
+    
+    function startTime( ) { 
+    /* check if seconds, minutes, and hours are equal to zero and start the timer*/ 
+    if ( seconds === 0 && minutes === 0 && hours === 0 ) {  
+    startWatch( );
+    } }
+
+// function to stop the time 
+    function stopTime( ) { 
+    /* check if seconds, minutes and hours are not equal to 0 */ 
+    if ( seconds !== 0 || minutes !== 0 || hours !== 0 ) { 
+    /* display the full time before reseting the stop watch */ 
+    var time = gethours + mins + secs;     
+    $('.container').find('.timer').html(time);
+    /*Add the time,moves and star rating to the congratulation modal only after game is complete*/
+    var StarsModalElem=$('.modal-element').eq(2);
+    var MovesModalElem=$('.modal-element').eq(1);
+    var TimerModalElem=$('.modal-element').eq(0);
+    $('.stars').clone().appendTo(StarsModalElem);
+    $('.moves').clone().appendTo(MovesModalElem);
+    $('.timer').clone().appendTo(TimerModalElem);
+    /* clear the stop watch using the setTimeout( ) return value 'clearTime' as ID */ 
+    clearTimeout( clearTime ); }}  
+    //Timer code end
+
+    // HTML elements creation for deck and cards
+    $('.container').append('<ul class="deck"></ul>');
+    for (var i = 0;i < Cards.length;i++) {
+    $('.deck').prepend('<li class="card"></li>'); 
+    }
+    $('.card').prepend('<i></i>');
+
+    for (var i = 0;i < Cards.length;i++) {
+    $('.card').eq(i).find('i').addClass(shuffleCards[i]);    
+    }
+
+    // Click event to restart the game
+    $('.restart').click(function(){
+    location.reload();
+    });
+
+    //Event listener for flipping the cards when clicked on 
+    $('.deck').on('click','.card',function (event) {
+    /*Start the timer when a card is clicked*/
+  startTime();
+    /*Essential condition for flipping a card i.e. a card may be flipped only if class='card' is present which is true always and only one other card is open.*/
+    if ($(this).attr('class')==='card' && OpenCards.length<2){
+    /*CLass name of a open card is pushed to opencards array when only one card is opened.*/
+    if (OpenCards.length===0) {
+    $(this).toggleClass('open');
+    OpenCards.push($(this).children().attr('class'));
+    }
+    else if (OpenCards.length===1) {
+    $(this).toggleClass('open');
+    OpenCards.push($(this).children().attr('class'));
+    /*Comparison of two open cards-If matched */
+    if (OpenCards[0]=== OpenCards[1]) {
+    $('.card').filter($('.open')).toggleClass('open match');
+    //Increment the number of tilees flipped and number of moves if a pair is made.
+    tilesFlipped=tilesFlipped + 2;
+    numOfmoves=numOfmoves+1;
+    $('.moves').text(numOfmoves);
+    //Empty the array for comparison of next two cards.
+    OpenCards= [];
+    }
+    else {
+    // To avoid flipping of more than two cards at a time and used to flip back cards that are not matching
+    function flipBack () {
+    $('.card').filter($('.open')).toggleClass('open');
+    OpenCards = [];
+    numOfmoves=numOfmoves+1;
+    $('.moves').text(numOfmoves);
+    }
+    setTimeout(flipBack, 600);
+    }
+    }
+    // Star rating
+     if (numOfmoves >1 && numOfmoves < 9) {
+    var stars5 =$('.stars').find('li').eq(4);
+    stars5.css('color','black')
+    }
+    
+     if (numOfmoves >9 && numOfmoves < 18) {
+    var stars4 =$('.stars').find('li').eq(3);
+    stars4.css('color','black');
+    }
+   
+     if (numOfmoves >18 && numOfmoves < 27) {
+    var stars3 =$('.stars').find('li').eq(2);
+    stars3.css('color','black');
+    }
+    
+     if (numOfmoves >36 && numOfmoves < 45) {
+    var stars2 =$('.stars').find('li').eq(1);
+    stars2.css('color','black',);
+    }
+  
+   if (numOfmoves > 54) {
+    var stars5 =$('.stars').find('li').eq(0);
+    stars5.css('color','black');
+    }
+}
+    // After all tiles are matched reload the game
+    if (tilesFlipped === Cards.length) {
+    stopTime();
+    $('.modal').css('display','block');
+    }     
+    });
+    </script>
+    </html>

@@ -1,203 +1,11 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Matching Game</title>
-    <meta name="description" content="">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
-    <link rel="stylesheet" href="css/app.css">
-</head>
-<body>
+/*jshint esnext: true */
 
-    <div class="container">
-        <header>
-            <h1>Matching Game</h1>
-        </header>
-
-        <section class="score-panel">
-            <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-            </ul>
-
-            <span class="moves">3</span> Moves
-
-            <div class="restart">
-                <i class="fa fa-repeat"></i>
-            </div>
-        </section>
-
-        <ul class="deck">
-            <img src="apple.png" height="16" width="16"> 
-               <img src="apple.png" height="16" width="16"> 
-            </li>
-           <img src="apple.png" height="16" width="16"> 
-               <img src="apple.png" height="16" width="16"> 
-            </li>
-           <img src="apple.png" height="16" width="16"> 
-               <img src="apple.png" height="16" width="16"> 
-            </li>
-           <img src="apple.png" height="16" width="16"> 
-               <img src="apple.png" height="16" width="16"> 
-            </li>
-            <img src="apple.png" height="16" width="16"> 
-                <img src="apple.png" height="16" width="16"> 
-            </li>
-            <img src="apple.png" height="16" width="16"> 
-              <img src="apple.png" height="16" width="16"> 
-            </li>
-            <img src="apple.png" height="16" width="16"> 
-               <img src="apple.png" height="16" width="16"> 
-            </li>
-            <li class="card">
-                <img src="apple.png" height="16" width="16"> 
-            </li>
-            <li class="card">
-                <i class="fa fa-diamond"></i>
-            </li>
-            <li class="card">
-                   
-                <i class="fa fa-apple" img src="apple.png"></i>
-            </li>
-            <li class="card show">
-                <i class="fa fa-leaf"></i>
-            </li>
-            <img src="dn1.jpg" height="16" width="16"> 
-
-            </li>
-            <li class="card open show">
-                <i class="fa fa-bolt"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-bicycle"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-paper-plane-o"></i>
-            </li>
-            <li class="card">
-                <i class="fa fa-cube"></i>
-            </li>
-        </ul>
-    </div>
-<style>
-html {
-    box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-    box-sizing: inherit;
-}
-
-html,
-body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background: #ecf0f1;
-    font-family: 'Coda', cursive;
-    color: #2c3e50;
-}
-
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-     
-}
-
-h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-}
-
-/*
- * Styles for the deck of cards
- */
-
-.deck {
-    width: 470px;
-    background: linear-gradient(160deg, #16a085 0%, #8e44ad 100%);
-    padding: 32px;
-    border-radius: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 0 3em;
-}
-
-.deck .card {
-    height: 110px;
-    width: 22%;
-    margin: 1%;
-    background: #2c3e50;
-    font-size: 0;
-    color: #2c3e50;
-    border-radius: 8px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
-}
-
-/*
- * Styles for the Score Panel
- */
-
-.score-panel {
-    text-align: left;
-    width: 450px;
-    margin-bottom: 10px;
-    font-size: 1.25rem;
-       
-}
-
-.score-panel .stars {
-    margin: 0 1.25rem 0 0;
-    padding: 0;
-    display: inline-block;
-    color: #f1c40f;
-}
-
-.score-panel .stars li {
-    list-style: none;
-    display: inline-block;
-}
-
-.score-panel .restart {
-    float: right;
-    cursor: pointer;
-    color: #d35400;
-}
-
-.dimmed {
-    display: none;
-}
-
-.timer {
-    float: left;
-    margin: 0 2rem;
-    width: 10vw;
-}
-</style>
-    <script>
-    let openedCards = [],
+// Define default values
+let openedCards = [],
     matchCounter = 0,
     moveCounter = 0,
     tryCounter = 0,
-    starRating = 5,
+    starRating = 3,
     timeInt = 0;
 
 // Grab the score-panel, add a timer with default value of 00:00, and initialize the total seconds to 0
@@ -219,9 +27,7 @@ moves[0].innerHTML = 0;
 const restart = document.getElementsByClassName(`fa-repeat`);
 
 // Define the symbols and create a deck of cards holding two of each symbol
-
-
-const symbols = [`apple`,`bicycle`, `bolt`, `bomb`, `cube`, `diamond`, `leaf`, `paper-plane-o`, ];
+const symbols = [`anchor`, `bicycle`, `bolt`, `bomb`, `cube`, `diamond`, `leaf`, `paper-plane-o`];
 const cards = [...symbols, ...symbols];
 
 // Returns a shuffled list of items
@@ -322,7 +128,7 @@ function processClick() {
                 lockMatch();
                 removeOpenedList();
                 // if all 16 cards are matched, stop the timer and display congrats
-                if (matchCounter === 2){
+                if (matchCounter === 16){
                     stopTimer();
                     // Allow time for the matching animation to finish before display popup
                     setTimeout(function() {
@@ -479,13 +285,9 @@ function lowerStars() {
 
 // Reset the rating to 3 and show all stars by removing the class 'dimmed'
 function resetStars() {
-    starRating = 5;
+    starRating = 3;
     const stars = document.getElementsByClassName(`fa-star`);
-    for (let i=0; i<5; i++){
+    for (let i=0; i<3; i++){
         stars[i].className = `fa fa-star`;
     }
 }
-</script>
-    <link rel="stylesheet" href="css/enhance.css">
-</body>
-</html>

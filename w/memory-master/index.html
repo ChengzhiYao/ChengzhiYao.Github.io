@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Memory Game</title>
+
+  <link rel="stylesheet" href="css/style.prefix.css">
+  <link rel="icon" type="image/png" href="img/mushroom.png">
+
+</head>
+ <div class="restart">
+        RESTART
+    <i class="fa fa-repeat"></i>
+            </div>
+
+<style>
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 20px 0;
+  background: #6589F9;
+}
+
+.grid {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.score-panel .restart {
+    float: right;
+    display: inline-block;
+    margin :0 0 0 80px;
+    cursor: pointer;
+}
+
+.card {
+  position: relative;
+  transition: all .4s linear;
+  transform-style: preserve-3d;
+  margin: 5px;
+}
+
+.card,
+.back,
+.front {
+  height: 150px;
+  width: 150px;
+}
+
+.back,
+.front {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+.front {
+  z-index: 2;
+  background: #FAB942 url('../img/question.gif') no-repeat center center / contain;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background-color: #6589F9;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.selected {
+  transform: rotateY(180deg);
+}
+
+.match .front {
+  background: #6589F9 !important;
+}
+</style>
+
+<body>
+
+  <div id="game"></div>
+
+  <script>
+  'use strict';
+
+var cardsArray = [{
+  'name': 'shell',
+  'img': 'apple.png'
+}, {
+  'name': 'star',
+  'img': 'img/star.png'
+}, {
+  'name': 'bobomb',
+  'img': 'img/bobomb.png'
+}, {
+  'name': 'mario',
+  'img': 'img/mario.png'
+}, {
+  'name': 'luigi',
+  'img': 'img/luigi.png'
+}, {
+  'name': 'peach',
+  'img': 'img/peach.png'
+}, {
+  'name': '1up',
+  'img': 'img/1up.png'
+}, {
+  'name': 'mushroom',
+  'img': 'img/mushroom.png'
+}, {
+  'name': 'thwomp',
+  'img': 'img/thwomp.png'
+}, {
+  'name': 'bulletbill',
+  'img': 'img/bulletbill.png'
+}, {
+  'name': 'coin',
+  'img': 'img/coin.png'
+}, {
+  'name': 'goomba',
+  'img': 'img/goomba.png'
+}];
+
+var gameGrid = cardsArray.concat(cardsArray).sort(function () {
+  return 0.5 - Math.random();
+});
+
+var firstGuess = '';
+var secondGuess = '';
+var count = 0;
+var previousTarget = null;
+var delay = 1200;
+
+var game = document.getElementById('game');
+var grid = document.createElement('section');
+grid.setAttribute('class', 'grid');
+game.appendChild(grid);
+
+gameGrid.forEach(function (item) {
+  var name = item.name,
+      img = item.img;
+
+
+  var card = document.createElement('div');
+  card.classList.add('card');
+  card.dataset.name = name;
+
+  var front = document.createElement('div');
+  front.classList.add('front');
+
+  var back = document.createElement('div');
+  back.classList.add('back');
+  back.style.backgroundImage = 'url(' + img + ')';
+
+  grid.appendChild(card);
+  card.appendChild(front);
+  card.appendChild(back);
+});
+
+var match = function match() {
+  var selected = document.querySelectorAll('.selected');
+  selected.forEach(function (card) {
+    card.classList.add('match');
+  });
+};
+
+var resetGuesses = function resetGuesses() {
+  firstGuess = '';
+  secondGuess = '';
+  count = 0;
+  previousTarget = null;
+
+  var selected = document.querySelectorAll('.selected');
+  selected.forEach(function (card) {
+    card.classList.remove('selected');
+  });
+};
+
+grid.addEventListener('click', function (event) {
+
+  var clicked = event.target;
+
+  if (clicked.nodeName === 'SECTION' || clicked === previousTarget || clicked.parentNode.classList.contains('selected') || clicked.parentNode.classList.contains('match')) {
+    return;
+  }
+
+  if (count < 2) {
+    count++;
+    if (count === 1) {
+      firstGuess = clicked.parentNode.dataset.name;
+      console.log(firstGuess);
+      clicked.parentNode.classList.add('selected');
+    } else {
+      secondGuess = clicked.parentNode.dataset.name;
+      console.log(secondGuess);
+      clicked.parentNode.classList.add('selected');
+    }
+
+    if (firstGuess && secondGuess) {
+      if (firstGuess === secondGuess) {
+        setTimeout(match, delay);
+      }
+      setTimeout(resetGuesses, delay);
+    }
+    previousTarget = clicked;
+  }
+});
+</script>
+</body>
+
+</html>
