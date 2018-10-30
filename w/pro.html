@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+  </head>
+
+  <body>
+  	<style>
+      /* vh = 1/100 or 1% of the browser's height */
+  	  body { 
+        background-color: #3ABAE9; 
+        margin: 0;
+        height: 900vh;
+        font-family: 'Helvetica', sans-serif;
+      }
+      /* padding: top right bottom left */
+      /* padding: vertical horizontal */
+      .galaxy {
+        position: absolute;
+        top: 250px;
+        background-color: red;
+        background-size: cover;
+        width: 100%;
+        height: 1050px;
+        z-index: 0;
+      }
+      .planet {
+        position: absolute;
+        top: 250px;
+        right: -10px;
+        width: 95%;
+        z-index: 2;
+      }
+      .planet img { width: 100%; }
+      .debris {
+        position: absolute;
+        top: 100px;
+        width: 100%;
+        z-index: 3;
+      }
+      .astronaut {
+        position: absolute;
+        top: 300px;
+        right: 0;
+        z-index: 4;
+      }
+
+      
+      .red {
+        top: 150px;
+        position: absolute;
+      background-color:red;
+        color: red;
+        background-size: cover;
+        width: 100%;
+        height: 1000px;
+        z-index: 4;
+      }
+        
+        
+        	#menu { width: 100%; }
+  		ul { 
+  			list-style-type: none; 
+  			font-family: 'Helvetica', san-serif;
+  		}
+  		.list { 
+  			position: relative;
+  			text-align: center; 
+  			background-color: black;
+  			padding: 0px;
+  			z-index: 100;
+  		}
+  		.list__item {
+  			display: inline-block;
+  			margin-right: 50px;
+  			font-size: 30px;
+  			color: white;
+  		}
+        
+     
+  	</style>
+
+    <div class="galaxy">
+    
+    <div class="planet">
+      <img src="images/planet.png">
+    </div>
+
+    <div class="debris">
+      <img src="images/debris.png">
+    </div>
+
+    <div class="astronaut">
+      <img src="images/astronaut.png">
+    </div>
+    
+<div id="jp"  class="red">
+
+</div>
+
+<div class="menu" id="menu">
+  		<ul class="list">
+  			<li class="list__item" > <a href="#jp">Red </a></li>
+  			<li class="list__item">Dont bother</li>
+  			<li class="list__item">Recipes</li>
+  		</ul>
+
+  		<ul class="contact sublist hide">
+			<li class="sublist__item" data-type="email">chocolate</li>
+			<li class="sublist__item" data-type="phone">Sweet chocolate</li>
+			<li class="sublist__item" data-type="instagram">Black chocolate</li>
+		</ul>
+  	</div>
+
+
+
+
+  		<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="main.js"></script>
+    
+    
+    <script>
+
+ $(document).ready(function () {
+	$(window).scroll(function(e) {
+		parallax();
+	});
+
+	function parallax() {
+		var scroll = $(window).scrollTop();
+
+		$('.planet').css({
+			'top': (scroll * 0.25) + 'px'
+		});
+
+		$('.debris').css({
+			'top': (scroll * 0.50) + 'px'
+		});
+
+		$('.astronaut').css({
+			'top': (scroll * 0.75) + 'px'
+		});
+	}
+});
+
+$(window).scroll(function(e) {
+
+	$('.red').css({
+		'opacity': 1 - ($(window).scrollTop() / 1000)
+	});
+	
+});
+
+	$('#menu').on('click', function(e) {
+		e.preventDefault();
+
+		var $target = $(e.target),
+			value = $target.text();
+
+		var offset = $('.jp').offset();
+
+		var navHeight = $('menu').height();
+
+		$('body').animate({
+			scrollTop: offset.top - navHeight
+		}, 500);
+	});
+
+
+</script>
+    
+  </body>
+</html>

@@ -1,0 +1,224 @@
+<html>
+  <head>
+    <title></title>
+  </head>
+
+  <body>
+  
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+  
+  	<style>
+  	
+  	#menu {
+  	 position: fixed;
+  top: 0;
+  width: 100%;
+  	   overflow: hidden;
+  	  z-index: 5
+  	  }
+  		ul { 
+  			list-style-type: none; 
+  			font-family: 'Helvetica', san-serif;
+  			
+  		}
+  		.list { 
+  			position: relative;
+  			text-align: center; 
+  			background-color: black;
+  			padding: 0px;
+  			z-index: 100;
+  		}
+  		.list__item {
+  			display: inline-block;
+  			margin-right: 50px;
+  			font-size: 30px;
+  			color: white;
+  		}
+  	
+  	
+body { 
+ 
+  background-color: #3ABAE9; 
+        margin: 0;
+        height: 900vh;
+        font-family: 'Helvetica', sans-serif;
+  
+  
+}
+
+    .galaxy {
+        position: absolute;
+        top: 250px;
+        background: url('unreavelcolor.jpg') no-repeat center center;
+        background-size: cover;
+        width: 100%;
+        height: 1050px;
+        z-index: 1;
+      }
+      .galaxy img { width: 100%; }
+      
+    
+      .debris {
+        position: absolute;
+        top: 100px;
+        width: 100%;
+        z-index: 3;
+      }
+      .secondsection {
+        position: fixed;
+        top: 3000px;
+        width: 100%;
+        z-index: 3;
+      }
+      .secondsection img { width: 100%; }
+      .debris img { width: 100%; }
+      
+      .astronaut {
+        position: absolute;
+        width:70%;
+        top: 100px;
+        right: 0;
+        z-index: 4;
+      }
+#One { position: absolute;
+  top: 100px; }
+#Two { position: absolute;
+  top: 4000px;}
+#Three { position: absolute;
+  top: 7000px;}
+
+</style>
+
+
+  <h1 id="top">Smooth Page Scrolling</h1>
+
+<div id="menu">
+  		<ul class="list">
+  		  <li class="list__item"><a href="#one" style=text-decoration:none>Scroll to Section Two</a></li>
+    <li class="list__item" ><a href="#two"  style=text-decoration:none>Scroll to Section Two</a></li>
+    <li class="list__item"><a href="#three"  style=text-decoration:none>Scroll to Section Three</a> 
+   
+   </li>
+  		</ul>
+  	</div>
+
+
+
+
+  <ul>
+ 
+  </ul>
+<div>
+  <h2 id="one"></h2>
+ <div class="galaxy">
+    
+ 
+
+    <div class="debris">
+      <img src="unreavel.png">
+    </div>
+
+    <div class="astronaut">
+      <img src="human.png">
+    </div>
+  </div>
+<div>
+  <h2 id="two">Section Two</h2>
+  
+   <div class="secondsection">
+      <img src="Cover12.jpg">
+    </div>
+  
+</div>
+
+<div>
+  <p><a href="#top">Top</a></p>
+
+ </div>
+<div>
+  <h2 id="three">Section Three</h2>
+</div>
+<div>
+  <p><a href="#top">Top</a></p>
+</div>
+  
+    
+  <script>
+  
+  
+ $(document).ready(function () {
+	$(window).scroll(function(e) {
+		parallax();
+	});
+
+	function parallax() {
+		var scroll = $(window).scrollTop();
+
+	$('.secondsection').css({
+	  'top': (scroll*0.5)+'px'
+	});
+
+		$('.debris').css({
+			'top': (scroll * 0.80) + 'px'
+		});
+
+		$('.astronaut').css({
+			'top': (scroll * 0.5) + 'px'
+		});
+	}
+});
+  
+  
+  
+  $('a[href*="#"]')
+  // Remove links that don't actually link to anything
+  .not('[href="#"]')
+  .not('[href="#0"]')
+  .click(function(event) {
+    // On-page links
+    if (
+      location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') 
+      && 
+      location.hostname == this.hostname
+    ) {
+      // Figure out element to scroll to
+      var target = $(this.hash);
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      // Does a scroll target exist?
+      if (target.length) {
+        // Only prevent default if animation is actually gonna happen
+        event.preventDefault();
+        $('html, body').animate({
+          scrollTop: target.offset().top
+        }, 1000, function() {
+          // Callback after animation
+          // Must change focus!
+          var $target = $(target);
+          $target.focus();
+          if ($target.is(":focus")) { // Checking if the target was focused
+            return false;
+          } else {
+            $target.attr('tabindex','-1'); // Adding tabindex for elements not focusable
+            $target.focus(); // Set focus again
+          };
+        });
+      }
+    }
+  });
+  
+  $(window).scroll(function(e) {
+
+	$('.astronaut').css({
+		'opacity': 1 - ($(window).scrollTop() / 1000)
+	});
+	
+});
+  
+  
+  
+  </script>
+    
+</div>
+
+</body>
+</html>
