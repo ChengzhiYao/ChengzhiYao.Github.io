@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+ 
+  <body>
+    <div class="containter"> <input type="text" placeholder="Search.." class="input"> <button>search</button> </div>
+  
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+  
+   <script>
+   
+  $(document).ready(function () {
+    $('button').on('click',function(e) {
+      $('a').fadeOut();
+      
+
+      var searchTerm=$('input').val();
+               url="https://data.cityofchicago.org/resource/f7f2-ggz5.json?$where=within_box(location, 41.885001, -87.645939, 41.867011, -87.618516)";
+    
+    $.ajax({
+      type:"GET",
+      url:url,
+      beforeSent:function(){
+         $('body').append('<div id="load">Loading</div>');
+      },
+      complete: function() {
+        $('#load').remove();
+      },
+      success:function(data){
+         console.log("Success!",data);
+      },
+      error:function(error){
+        console.log(error);
+      }
+    });
+   });
+   
+   
+   });
+   
+   </script>
+  
+   
+  </body>
+</html>
