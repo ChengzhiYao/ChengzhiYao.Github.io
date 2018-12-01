@@ -1,0 +1,139 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Animation test</title>
+<style>
+#b{
+
+  left: 50%;
+    top: 50%;
+  
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 52px;
+    margin: 4px 2px;
+    left: 40%;
+    top: 30%;
+    position:absolute;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button11 {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 52px;
+    margin: 4px 2px;
+    left: 40%;
+    top: 30%;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+@font-face {
+    font-family: myFirstFont;
+    src: url(sw.TTF);
+}
+
+ @font-face { font-family: spider; src: url('spider.ttf'); } 
+
+.button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid black;
+}
+
+.button1:hover {
+    background-color: black;
+    color: white;
+}
+
+
+.font{
+ font-size: 82px;
+  font-family: spider;
+     margin: 0px 2px;
+        padding: 0px 0px;
+              text-shadow: 2px 2px gray;
+
+}
+</style>
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+    
+    function beeLeft() {
+        $("#b").animate({left: "-=1500"}, 1500, "swing", beeRight);
+    }
+    function beeRight() {
+        $("#b").animate({left: "+=300"}, 1500, "swing", beeLeft);
+    }
+    
+    beeRight();
+});
+
+
+</script>
+
+
+
+
+  <button onclick="document.getElementById('id01').style.display='block'" class="button button1" id="what">Welcome</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-card-4">
+      <header class="w3-container"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2 class="font">Spider Is Cute </h2>
+      </header>
+      <div class="w3-container">
+        <p><button onclick="location.href='spider2.html'" class="button11 button1" id="what">agree</button><button  onclick="location.href='spider2.html'" class="button11 button1" id="what">disagree</button></p>
+ 
+        <p>You don't have to click agree</p>
+      </div>
+      <footer class="footer">
+        
+      </footer>
+    </div>
+  </div>
+</div>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+
+
+
+</head>
+<div id="demo">
+<body>
+    <div id="b" style="position:absolute;"> <img src="s2.gif" alt="Smiley face">
+ </div>
+</body>
+</div>
+</html>

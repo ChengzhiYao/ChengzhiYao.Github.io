@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+
+    <link href="/style.css" rel="stylesheet" type="text/css" media="all">
+  </head>
+  <style>
+  body {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+li {
+    list-style: none
+}
+
+.inline-block {
+    display: inline-block
+}
+
+.act-table {
+    display: table
+}
+
+.act-table-cell {
+    display: table-cell
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+    text-decoration: none;
+    color: inherit
+}
+
+.text-center {
+    text-align: center;
+
+
+}
+
+.text-left {
+    text-align: left
+}
+
+.text-right {
+    text-align: right
+}
+
+.pull-right {
+    float: right
+}
+
+.pull-left {
+    float: left
+}
+
+.ver-middle {
+    vertical-align: middle
+}
+
+header {
+    position: fixed;
+    top: 8px;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s
+}
+
+header.go-out {
+    top: -150px
+}
+
+header nav ul {
+    background-color: rgba(170,158,142, 0.5);
+    overflow: hidden;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px
+}
+
+header nav ul li {
+    color: #fff
+}
+
+header nav ul li a {
+    width: 100px;
+    max-width: 150px;
+    height: 32px;
+    display: block;
+    padding-top: 13px
+}
+
+header nav ul li.active a,
+header nav ul li.active a:hover {
+    background-color: rgba(255, 255, 255, 0.2)
+}
+
+header nav ul li:hover a {
+    background-color: rgba(255, 255, 255, 0.1)
+}
+
+.page {
+    background-color: rgba(0, 0, 0, 0.2)
+}
+
+.page .act-table {
+    width: 100%;
+    height: 100%
+}
+
+.page .act-table .act-table-cell {
+    font-size: 100px;
+    font-weight: 500;
+    color: #fff
+}
+
+.page.active {
+    z-index: 50
+
+}
+
+#wrap {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transition: .8s;
+    -webkit-transition: .8s;
+    -moz-transition: .8s
+}
+
+#wrap.active {
+    top: 10%;
+    bottom: 10%;
+    right: 10%;
+    left: 10%
+}
+
+.cube {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    -webkit-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    -moz-transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    transition: 1s;
+    -webkit-transition: 1s;
+    -moz-transition: 1s
+}
+
+.cube.reverse-back {
+    transform: rotateX(180deg) rotateY(0deg) rotateZ(-180deg);
+    -webkit-transform: rotateX(180deg) rotateY(0deg) rotateZ(-180deg);
+    -moz-transform: rotateX(180deg) rotateY(0deg) rotateZ(-180deg)
+}
+
+.cube.reverse-back .back {
+    transform: translateZ(-800px) rotateY(-180deg);
+    -webkit-transform: translateZ(-800px) rotateY(-180deg);
+    -moz-transform: translateZ(-800px) rotateY(-180deg)
+}
+
+.cube.reverse-left .left {
+    transform: translateX(-800px) rotateY(-90deg);
+    -webkit-transform: translateX(-800px) rotateY(-90deg);
+    -moz-transform: translateX(-800px) rotateY(-90deg)
+}
+
+.cube.reverse-right {
+    transform: rotateX(0deg) rotateY(270deg) rotateZ(0deg);
+    -webkit-transform: rotateX(0deg) rotateY(270deg) rotateZ(0deg);
+    -moz-transform: rotateX(0deg) rotateY(270deg) rotateZ(0deg)
+}
+
+.cube.reverse-right .right {
+    transform: translateX(800px) rotateY(90deg);
+    -webkit-transform: translateX(800px) rotateY(90deg);
+    -moz-transform: translateX(800px) rotateY(90deg)
+}
+
+.cube.reverse-top {
+    transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+    -webkit-transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+    -moz-transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg)
+}
+
+.cube.reverse-top .top {
+    transform: translateY(-400px) rotateX(90deg);
+    -webkit-transform: translateY(-400px) rotateX(90deg);
+    -moz-transform: translateY(-400px) rotateX(90deg)
+}
+
+.cube.reverse-bottom .bottom {
+    transform: translateY(400px) rotateX(-90deg);
+    -webkit-transform: translateY(400px) rotateX(-90deg);
+    -moz-transform: translateY(400px) rotateX(-90deg)
+}
+
+.face {
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    color: #666;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5)
+
+}
+
+.front {
+      
+    background-color: #91AB97 ;
+ 
+
+}
+
+.front.active {
+    transform: translateZ(800px);
+    -webkit-transform: translateZ(800px);
+    -moz-transform: translateZ(800px)
+     
+}
+
+.back {
+ background-image:url("cao.png");
+         background-size: auto;
+background-size: 80%;
+    background-repeat: no-repeat;
+        background-position: center; 
+
+    background-color: #F1F2ED;
+}
+
+.back:not(.active) {
+    transform: translateZ(-800px) rotateY(-180deg);
+    -webkit-transform: translateZ(-800px) rotateY(-180deg);
+    -moz-transform: translateZ(-800px) rotateY(-180deg)
+}
+
+.back .active {
+    transform: translateZ(800px);
+    -webkit-transform: translateZ(800px);
+    -moz-transform: translateZ(800px)
+}
+
+
+
+.left:not(.active) {
+    transform: translateX(-800px) rotateY(-90deg);
+    -webkit-transform: translateX(-800px) rotateY(-90deg);
+    -moz-transform: translateX(-800px) rotateY(-90deg)
+}
+
+.left .active {
+    transform: translateZ(800px);
+    -webkit-transform: translateZ(800px);
+    -moz-transform: translateZ(800px)
+}
+
+.right {
+     background-image:url("s6.png");
+         background-size: auto;
+background-size: 70%;
+    background-repeat: no-repeat;
+          background-color: #B77D1A;
+
+   
+}
+.abc{
+  color:#1F1D1C;
+  font-family: spider;
+  font-size: 200px;
+      text-shadow: 2px 2px #95DAB8;
+
+  
+}
+.abcc{
+  color:#D0CEDC;
+    font-family:spider;
+    font-size: 200px;
+      text-shadow: 2px 2px gray;
+
+}
+.abccc{
+  color:#62504A;
+    font-family: spider;
+    font-size: 200px;
+      text-shadow: 2px 2px #140602;
+
+}
+.abcccc{
+  color:#E2B22A;
+    font-family: spider;
+    font-size: 200px;
+      text-shadow: 2px 2px #140602;
+
+}  
+  
+  
+  
+.right:not(.active) {
+    transform: translateX(800px) rotateY(90deg);
+    -webkit-transform: translateX(800px) rotateY(90deg);
+    -moz-transform: translateX(800px) rotateY(90deg)
+}
+
+.right .active {
+    transform: translateZ(800px);
+    -webkit-transform: translateZ(800px);
+    -moz-transform: translateZ(800px)
+}
+
+.top {
+     background-image:url("nima.png");
+         background-size: auto;
+background-size: 50%;
+    background-repeat: no-repeat;
+      background-color: #A9845D;
+    
+}
+
+.top:not(.active) {
+    transform: translateY(-400px) rotateX(90deg);
+    -webkit-transform: translateY(-400px) rotateX(90deg);
+    -moz-transform: translateY(-400px) rotateX(90deg)
+
+}
+
+.top .active {
+    transform: translateZ(800px);
+    -webkit-transform: translateZ(800px);
+    -moz-transform: translateZ(800px)
+ 
+}
+
+.bottom:not(.active) {
+    transform: translateY(400px) rotateX(-90deg);
+    -webkit-transform: translateY(400px) rotateX(-90deg);
+    -moz-transform: translateY(400px) rotateX(-90deg)
+}
+
+.bottom .active {
+    transform: translateZ(800px);
+    -webkit-transform: translateZ(800px);
+    -moz-transform: translateZ(800px)
+}
+.pag {    font-size: 40px;
+  color: #FFDD8C;
+      text-shadow: 2px 2px black;
+
+    font-family: Delicious
+}
+
+.pagg {    font-size: 40px;
+  color: #EDC0A1;
+      text-shadow: 2px 2px gray;
+
+    font-family: Delicious
+}
+.paggg {    font-size: 40px;
+  color: #F1EEE9;
+      text-shadow: 2px 2px #62504A;
+
+    font-family: Delicious
+}
+.pagggg {    font-size: 40px;
+  color: #FFE17C;
+      text-shadow: 2px 2px #62504A;
+
+    font-family: Delicious
+}
+
+ @font-face { font-family: spider; src: url('spider.ttf'); } 
+ @font-face { font-family: Delicious; src: url('sww.TTF'); } 
+ #div1{background-size: 40%
+ }
+
+</style>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+
+  <body>
+   <header>
+  <nav class="text-center">
+    <ul class="inline-block">
+      <li class="pull-left active"><a href="#" data-direction="front">  Home</a></li>
+      <li class="pull-left"><a href="#" data-direction="back">Obama</a></li>
+      <li class="pull-left"><a href="#" data-direction="top">Lincoln</a></li>
+      <li class="pull-left"><a href="#" data-direction="right">Hitler</a></li>
+      <div class="clearfix"></div>
+    </ul>
+  </nav>
+</header>
+<div id="wrap">
+  <div class="cube">
+    <section class="page active face front" id="home">
+      <div class="act-table text-center">
+        <div class="act-table-cell ver-middle"><span class="abc">Spider House</span>
+        <p class="pag"> Hi,I am a spider seller!<br>technically,<br> I don't sell spider for living,but I just want more people to have them!! <br>if you want a spider, fell free to call me,<br> my phone number is
+        (1)346-235-356
+      
+        </div>
+      </div>
+    </section>
+    <section class="page face back" id="Obama">
+      <div class="act-table text-center">
+     
+        <div class="act-table-cell ver-middle"><span class="abcc"> Obama</span>
+     
+        
+         <ol class="pagg">
+         <li > $59.99
+<li >Theraphosa stirmi
+<li >Field Collected Beauties
+<li >Approximate Size: 4 To 6 Inch Leg Span
+<li > They Eat Mostly Anything They Can Overpower<br> And Some Scientist Have Found Them Devouring Birds<br>  When Discovered Hence The Common Name They Have!<li >Feeding On Fat Juicy Crickets, Mealworms And Rodents!</div>
+
+        
+      </div>
+    </section>
+    <section class="page face top" id="Lincoln">
+      <div class="act-table text-center">
+        <div class="act-table-cell ver-middle"><span class="abccc">Lincoln</span>
+        
+         <ol class="paggg">
+         <li > $34.99
+<li >Ephebopus uatuman
+<li >aptive Bred Babies
+<li >Approximately 2 – 3 Inches In Legspan
+<li >Gorgeous Little Inverts Coming In Dark Brown Armored Exoskeleton <br> With White Striped Joints
+<br> And Some Scientist Have Found Them Devouring Birds  <li >Feeding On Varying Smaller Insects Regularly
+</div>
+
+      </div>
+    </section>
+    <section class="page face right" id="Hitler">
+      <div class="act-table text-center">
+        <div class="act-table-cell ver-middle"><span class="abcccc">Hitler</span>
+         <ol class="pagggg">
+<li >$34.99
+<li >Pterinopelma sazimai
+<li >Captive Bred
+<li >Approximate Sizes Around .25 – .75 Inches In Legspan
+<li > Fast Little Tarantulas With A Light Brown Body<br> But After A Couple Molts These Arachnids <br>Will Explode Into An Iridescent Blue From Tip To Tip<br>  Feeding On Small Insects Regularly</div>
+      </div>
+    </section>
+    
+   
+  </body>
+  
+  <script>
+  (function(document, window, $){
+    $(document).ready(function(){
+
+        // Variables
+        var 
+            windowWidth = $(window).width(),
+            windowHeight = $(window).height(),
+            $header = $('header');
+
+        // header anchor tags
+        function headerAnchors(){
+            var pageDirection = '';
+            var thisElement;
+            var timeout;
+            $header.find('nav li a').click(function(event){
+                event.preventDefault();
+                    $('.cube').removeClass('reverse-' + pageDirection);
+                thisElement = $(this);
+                pageDirection = thisElement.data('direction');
+                reverseDirection = thisElement.data('reverse-direction');
+                thisElement.parent().addClass('active').siblings().removeClass('active');
+                    $('.cube').addClass('reverse-' + pageDirection);
+
+                    $header.addClass('go-out');
+                $('#wrap').addClass('active');
+                clearTimeout(timeout);
+                timeout = setTimeout(function(){
+                    $header.removeClass('go-out');
+                    $('#wrap').removeClass('active');
+                }, 1000);
+            });
+        }headerAnchors();
+        $(window).resize(function(){
+
+            // Vars
+                windowWidth = $(window).width();
+                windowHeight = $(window).height();
+            // Functions
+        });
+    });
+})(document, window, jQuery);
+</script>
+<audio autoplay loop >
+  <source src="spider.mp3" type="audio/mp3">
+</audio>
+ 
+</html>
